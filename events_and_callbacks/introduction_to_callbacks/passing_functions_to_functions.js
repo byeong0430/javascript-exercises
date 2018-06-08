@@ -4,6 +4,7 @@
 // 3. Verify it works by running the file with the `node` command line program.
 // 4. Repeat until all use cases are functioning.
 
+// Callback functions
 var animalToCatTranslator = function(sentence) {
   return sentence.replace("animal", "cat");
 };
@@ -12,16 +13,20 @@ var animalToDogTranslator = function(sentence) {
   return sentence.replace("animal", "dog");
 };
 
-/*
 // Write your own translator for your preferred animal!
-var ____ = ____(sentence) {
-  return ____._____(____, ____);
+var animalToMonkeyTranslator = function(sentence) {
+  return sentence.replace("animal", "monkey");
 };
-*/
+// End - Callback functions
 
+// Higher-order function
 var favoriteAnimal = function(animalTranslator) {
-  return animalTranslator("animals are the best!");
+  return animalTranslator("animals are the best!"); // Placer for any callback functions you choose!
 };
+// console.log(favoriteAnimal(animalToCatTranslator));
+// console.log(favoriteAnimal(animalToDogTranslator));
+// console.log(favoriteAnimal(animalToMonkeyTranslator));
+
 
 // !module.parent is true if the current file is being run directly in node
 // and false when being required by another file.
@@ -36,20 +41,20 @@ if (!module.parent) {
 
   // Choose a callback function from the animalToXTranslators above to make the
   // following use cases pass.
-  // console.log(favoriteAnimal(____) === "cats are the best!");
-  // console.log(favoriteAnimal(____) === "dogs are the best!");
+  console.log(favoriteAnimal(animalToCatTranslator) === "cats are the best!");
+  console.log(favoriteAnimal(animalToDogTranslator) === "dogs are the best!");
 
   // Define your own animal translator! Uncomment lines 15 to 20, then make the
   // following use case pass.
-  // console.log(favoriteAnimal(____) === "____s are the best!");
+  console.log(favoriteAnimal(animalToMonkeyTranslator) === "monkeys are the best!");
 
   // Have you tried to put ()'s after the callback function being passed as an
   // argument? What happened? Why do you think that is?
 
 
   // You can also define callback functions in-line:
-  // console.log(favoriteAnimal(function(sentence) {
-  //   ____ ____.____("animal", "aardvark");
-  // } === "aardvarks are the best!");
+  console.log(favoriteAnimal(function(sentence) {
+    return sentence.replace("animal", "aardvark");
+  }) === "aardvarks are the best!");
   // This is known as an "anonymous function".
 }
